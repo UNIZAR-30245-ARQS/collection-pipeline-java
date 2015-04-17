@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = 'ejemplo.Pipeline'
+
+// Necesario para ejecutar gradle run en consola con entrada de texto. 
+// Por defecto gradle usa un stdin vacío y no funcionan bien
+run {  
+    standardInput = System.in  
+}
+
+jar {
+    baseName = 'collection-pipeline'
+    version = '0.1.0'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {        
+}
